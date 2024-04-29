@@ -50,6 +50,16 @@ const forms = (state) => {
                 .then(res => {
                     console.log(res);
                     statusMessage.textContent = message.success;
+                    if(item.getAttribute('data-calc')) {
+                        document.querySelector('.popup_calc_end').style.display = "none";
+                        document.body.style.overflow = '';
+                    };
+                    state.width = '';
+                    state.height = '';
+                    state.profile = '';
+                    document.querySelectorAll('.checkbox').forEach(checkbox => {
+                        checkbox.checked = false;
+                    });
                 })
                 .catch(() => statusMessage.textContent = message.failure)
                 .finally(() => {

@@ -6,57 +6,33 @@ const modals = (state) => {
               windows = document.querySelectorAll('[data-modal]');
 
 
-        const message = {
-            profile: 'Пожалуйста, введите размеры',
-            end: 'Пожалуйста, выберите тип отопления'
-        };
-
-        let statusMessage = document.createElement('div');
-        statusMessage.classList.add('status');
-        
-
-
         trigger.forEach(item => {
-            const handleClick = (e) => {
+            item.addEventListener('click', (e) => {
                 if (e.target) {
                     e.preventDefault();
                 }
-        
-                let shouldOpenModal = true;
-        
+
                 if (modal.classList.contains('popup_calc_profile')) {
-                    if (!state.width || !state.height) {
-                        shouldOpenModal = false;
-                        document.querySelector('.popup_calc_content').appendChild(statusMessage);
-                        statusMessage.textContent = message.profile;
-                    } else {
-                        statusMessage.remove();
+                    if (!state.form || !state.width || !state.height) {
+                        item.removeEventListener('click');
                     }
                 }
-        
+
                 if (modal.classList.contains('popup_calc_end')) {
-                    if (!state.profile) {
-                        shouldOpenModal = false;
-                        document.querySelector('.popup_calc_profile_content').appendChild(statusMessage);
-                        statusMessage.textContent = message.end;
-                    } else {
-                        statusMessage.remove();
+                    if (!state.type || !state.profile) {
+                        item.removeEventListener('click');
                     }
                 }
-        
-                if (shouldOpenModal) {
-                    windows.forEach(item => {
-                        item.style.display = 'none';
-                    });
-        
-                    modal.style.display = 'block';
-                    document.body.style.overflow = 'hidden';
-                }
-            };
-        
-            item.addEventListener('click', handleClick);
+
+
+                windows.forEach(item => {
+                    item.style.display = 'none';
+                });
+    
+                modal.style.display = 'block';
+                document.body.style.overflow = 'hidden';
+            });
         });
-            
 
         close.addEventListener('click', () => {
             modal.style.display = 'none';
