@@ -18,6 +18,19 @@ body {
   color: red;
 }
 
+.faded {
+  animation-name: faded;
+  animation-duration: 1.5s;
+}
+
+@keyframes faded {
+  from {
+    opacity: 0.1;
+  } to {
+    opacity: 1;
+  }
+}
+
 a:hover {
   text-decoration: none;
 }
@@ -927,7 +940,7 @@ textarea:focus {
   margin-bottom: 1rem;
 }
 
-.popup_calc_content .big_img img {
+.popup_calc_content .big-img img {
   display: none;
   margin-bottom: 3rem;
   width: 30rem;
@@ -1752,7 +1765,7 @@ textarea:focus {
     width: 20%;
   }
 
-  .popup_calc_content .big_img img {
+  .popup_calc_content .big-img img {
     margin-bottom: 2rem;
     width: 25rem;
   }
