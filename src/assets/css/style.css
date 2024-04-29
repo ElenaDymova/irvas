@@ -927,7 +927,7 @@ textarea:focus {
   margin-bottom: 1rem;
 }
 
-.popup_calc_content .big_img img {
+.popup_calc_content .big-img img {
   display: none;
   margin-bottom: 3rem;
   width: 30rem;
@@ -1752,7 +1752,7 @@ textarea:focus {
     width: 20%;
   }
 
-  .popup_calc_content .big_img img {
+  .popup_calc_content .big-img img {
     margin-bottom: 2rem;
     width: 25rem;
   }
