@@ -1,3 +1,4 @@
+
 const images = () => {
     const imgPopup = document.createElement('div'),
           workSection = document.querySelector('.works'),
@@ -5,7 +6,6 @@ const images = () => {
 
     bigImage.style.maxWidth = '80%';
     bigImage.style.maxHeight = '80%';
-    imgPopup.classList.add('popup');
     workSection.appendChild(imgPopup);
 
     imgPopup.style.justifyContent = 'center';
@@ -16,17 +16,21 @@ const images = () => {
     
     workSection.addEventListener('click', (e) => {
         e.preventDefault();
+        imgPopup.classList.add('popupImg');
 
         let target = e.target;
 
         if (target && target.classList.contains('preview')) {
+
             imgPopup.style.display = 'flex';
             const path = target.parentNode.getAttribute('href');
             bigImage.setAttribute('src', path);
+            document.body.style.overflow = 'hidden';
         }
 
-        if (target && target.matches('div.popup')) {
+        if (target && target.matches('div.popupImg')) {
             imgPopup.style.display = 'none';
+            document.body.style.overflow = '';
         }
     });
 

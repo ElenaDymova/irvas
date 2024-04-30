@@ -853,6 +853,17 @@ textarea:focus {
   background-color: rgba(0, 0, 0, 0.5);
 }
 
+.popupImg {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 9;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
 .myimage {
   position: fixed;
   top: 0;
