@@ -18,7 +18,6 @@ const images = () => {
     bigImage = document.createElement('img');
   bigImage.style.maxWidth = '80%';
   bigImage.style.maxHeight = '80%';
-  imgPopup.classList.add('popup');
   workSection.appendChild(imgPopup);
   imgPopup.style.justifyContent = 'center';
   imgPopup.style.alignItems = 'center';
@@ -26,14 +25,17 @@ const images = () => {
   imgPopup.appendChild(bigImage);
   workSection.addEventListener('click', e => {
     e.preventDefault();
+    imgPopup.classList.add('popupImg');
     let target = e.target;
     if (target && target.classList.contains('preview')) {
       imgPopup.style.display = 'flex';
       const path = target.parentNode.getAttribute('href');
       bigImage.setAttribute('src', path);
+      document.body.style.overflow = 'hidden';
     }
-    if (target && target.matches('div.popup')) {
+    if (target && target.matches('div.popupImg')) {
       imgPopup.style.display = 'none';
+      document.body.style.overflow = '';
     }
   });
 };
@@ -260,6 +262,7 @@ const modals = state => {
             item.style.display = 'none';
           });
           modal.style.display = 'block';
+          clearTimeout(timerId);
           document.body.style.overflow = 'hidden';
         }
       };
@@ -279,8 +282,9 @@ const modals = state => {
       }
     });
   }
+  let timerId;
   function showModalByTime(selector, time) {
-    setTimeout(function () {
+    timerId = setTimeout(function () {
       document.querySelector(selector).style.display = 'block';
       document.body.style.overflow = 'hidden';
     }, time);
@@ -290,7 +294,7 @@ const modals = state => {
   bindModal('.popup_calc_btn', '.popup_calc', '.popup_calc_close');
   bindModal('.popup_calc_button', '.popup_calc_profile', '.popup_calc_profile_close', false);
   bindModal('.popup_calc_profile_button', '.popup_calc_end', '.popup_calc_end_close', false);
-  showModalByTime('.popup', 60000);
+  showModalByTime('.popup', 5000);
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (modals);
 
